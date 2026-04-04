@@ -1,5 +1,7 @@
 ---
 
+import '../styles/global.css';
+const PageTitle = "MainPage";
 ---
 
 <html lang="en">
@@ -9,10 +11,15 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{PageTitle}</title>
 	</head>
 	<body>
-		<h1>Astro</h1>	
+
+		<!-- <a href="/">Home</a> -->
+		<a href="/about/">About</a>
+
+		<a href="/blog/">Projects</a>
+		<h1>{PageTitle}</h1>
 		<h2>This is Jorge's first Website</h2>
 	</body>
 </html>
