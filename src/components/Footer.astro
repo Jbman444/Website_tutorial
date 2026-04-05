@@ -1,0 +1,33 @@
+<!-- ---
+const username = "Jbman444";
+const url = "https://github.com/" + username;
+---
+
+<footer>
+  <p>
+    Learn more about my projects on 
+    <a href={url}>GitHub</a>!
+  </p>
+</footer> -->
+
+---
+import Social from './Social.astro';
+---
+
+<style>
+  footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
+
+<!-- www.linkedin.com/in/jorgelvlara -->
+
+<footer>
+
+  <Social platform="linkedin" username="jorgelvlara" />
+  <Social platform="github" username="Jbman444" />
+  <!-- <Social platform="youtube" username="astrodotbuild" /> -->
+
+</footer>
