@@ -1,7 +1,9 @@
 ---
-
+import Navigation from '../components/Navigation.astro';
 import '../styles/global.css';
-const PageTitle = "MainPage";
+import Footer from '../components/Footer.astro';
+
+const PageTitle = "Main Page";
 ---
 
 <html lang="en">
@@ -16,10 +18,11 @@ const PageTitle = "MainPage";
 	<body>
 
 		<!-- <a href="/">Home</a> -->
-		<a href="/about/">About</a>
-
-		<a href="/blog/">Projects</a>
+		<!-- <a href="/about/">About</a>
+		<a href="/blog/">Projects</a> -->
+		<Navigation />
 		<h1>{PageTitle}</h1>
 		<h2>This is Jorge's first Website</h2>
+		<Footer />
 	</body>
 </html>
