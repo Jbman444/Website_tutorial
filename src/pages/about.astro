@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 const pageTitle = "About Me";
 
 const identity = {
@@ -44,7 +45,8 @@ const textCase = "uppercase";
 	</head>
 	<body>
 
-		<a href="/">Home</a>
+		<!-- <a href="/">Home</a> -->
+		<Header />
 		<!-- <a href="/about/">About</a> -->
 		<h1>My Astro Website</h1>	
 		<h1>{pageTitle}</h1>
