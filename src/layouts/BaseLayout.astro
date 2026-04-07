@@ -27,8 +27,8 @@ const pageTitle = "Home Page";
 import Header from '../components/Header.astro';
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+const { pageTitle } = Astro.props;
 
-const PageTitle = "Jorge L. Vargas Lara M.S";
 ---
 
 <html lang="en">
@@ -38,7 +38,7 @@ const PageTitle = "Jorge L. Vargas Lara M.S";
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{PageTitle}</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
 
@@ -47,8 +47,8 @@ const PageTitle = "Jorge L. Vargas Lara M.S";
 		<a href="/blog/">Projects</a> -->
 		<!-- <Navigation /> -->
 		<Header />
-		<h1>{PageTitle}</h1>
-		<h2>This is Jorge's first Website</h2>
+		<h1>{pageTitle}</h1>
+		<!-- <h2>This is Jorge's first Website</h2> -->
         <slot />
 		<Footer />
 
