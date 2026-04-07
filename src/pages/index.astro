@@ -1,30 +1,7 @@
 ---
-// import Navigation from '../components/Navigation.astro';
-import Header from '../components/Header.astro';
-import '../styles/global.css';
-import Footer from '../components/Footer.astro';
-
-const PageTitle = "Jorge L. Vargas Lara M.S";
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Jorge L. Vargas Lara M.S";
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{PageTitle}</title>
-	</head>
-	<body>
-
-		<!-- <a href="/">Home</a> -->
-		<!-- <a href="/about/">About</a>
-		<a href="/blog/">Projects</a> -->
-		<!-- <Navigation /> -->
-		<Header />
-		<h1>{PageTitle}</h1>
-		<h2>This is Jorge's first Website</h2>
-		<Footer />
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <h2>My awesome blog subtitle</h2>
+</BaseLayout>
