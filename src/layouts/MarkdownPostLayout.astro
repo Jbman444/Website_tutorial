@@ -1,12 +1,13 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+const authorName = 'Jorge L. Vargas Lara'
 const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
   <p><em>{frontmatter.description}</em></p>
   <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
 
-  <p>Written by: {frontmatter.author}</p>
+  <p>Written by: {authorName}</p>
 
   <slot />
 
