@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: Teaching and Outreach
+title: Data Analysis and Professional Writing
 author: Astro Learner
 description: "After learning some Astro, I couldn't stop!"
 image:

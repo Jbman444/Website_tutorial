@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: Project 3
+title: Modflow Simulation
 author: Astro Learner
 description: "I had some challenges, but asking in the community really helped!"
 image:

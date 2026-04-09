@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: Project 4
+title: QGIS Examples
 author: Astro Learner
 description: "I had some challenges, but asking in the community really helped!"
 image:
