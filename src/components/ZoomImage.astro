@@ -1,0 +1,93 @@
+---
+const { src, alt = "Zoom image" } = Astro.props;
+---
+
+<div class="zoom-wrapper">
+  <img src={src} alt={alt} class="zoom-image" />
+  <div class="zoom-lens"></div>
+</div>
+
+<style>
+  .zoom-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    cursor: crosshair;
+  }
+
+  .zoom-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .zoom-lens {
+    position: absolute;
+    width: 185px;
+    height: 185px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    background-repeat: no-repeat;
+    transition: opacity 0.15s ease;
+  }
+
+  .zoom-wrapper:hover .zoom-lens {
+    opacity: 1;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const wrappers = document.querySelectorAll('.zoom-wrapper');
+
+    wrappers.forEach((wrapper) => {
+      const img = wrapper.querySelector('.zoom-image');
+      const lens = wrapper.querySelector('.zoom-lens');
+
+      if (!img || !lens) return;
+
+      const zoom = 3.5;
+
+      const updateBackground = () => {
+        lens.style.backgroundImage = `url("${img.getAttribute('src')}")`;
+        lens.style.backgroundSize = `${img.clientWidth * zoom}px ${img.clientHeight * zoom}px`;
+      };
+
+      const moveLens = (e) => {
+        const rect = img.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+          lens.style.opacity = '0';
+          return;
+        }
+
+        lens.style.opacity = '1';
+        lens.style.left = `${x}px`;
+        lens.style.top = `${y}px`;
+
+        const bgX = -(x * zoom - lens.offsetWidth / 2);
+        const bgY = -(y * zoom - lens.offsetHeight / 2);
+
+        lens.style.backgroundPosition = `${bgX}px ${bgY}px`;
+      };
+
+      updateBackground();
+
+      if (!img.complete) {
+        img.addEventListener('load', updateBackground);
+      }
+
+      wrapper.addEventListener('mousemove', moveLens);
+      wrapper.addEventListener('mouseenter', updateBackground);
+      wrapper.addEventListener('mouseleave', () => {
+        lens.style.opacity = '0';
+      });
+    });
+  })();
+</script>

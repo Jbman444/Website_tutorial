@@ -3,7 +3,7 @@
 // import Footer from '../components/Footer.astro';
 // import Header from '../components/Header.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+const allPosts = Object.values(import.meta.glob('./posts/*.{md,mdx}', { eager: true }));
 const pageTitle = "Notable Projects";
 ---
 
