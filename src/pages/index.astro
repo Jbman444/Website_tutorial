@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Jorge L. Vargas Lara M.S.";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="home-page">
+    <section class="hero">
+      <div class="logo-box">Logo</div>
+
+      <div class="hero-text">
+        <p class="eyebrow">Water Resources • Modeling • CFD</p>
+        <h1 class="floating-name">Jorge L. Vargas Lara</h1>
+        <p class="intro">
+          I am a Water Resources Engineer focused on computational modeling,
+          groundwater systems, and pore-scale flow processes. My work combines
+          physics-based simulation with data-driven analysis to better understand
+          environmental systems.
+        </p>
+      </div>
+
+      <div class="visual-3d">3D Visual</div>
+    </section>
+
+    <section class="featured-grid">
+      <article class="card">
+        <div class="visual">Biofilm</div>
+        <h2>Biofilm Research</h2>
+        <p class="card-text">
+          Pore-scale simulations and image-based modeling to study biofilm growth
+          and its impact on flow and transport.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="visual">Groundwater</div>
+        <h2>Groundwater Modeling</h2>
+        <p class="card-text">
+          MODFLOW and regional hydrogeologic analysis to evaluate groundwater
+          systems and water resource management.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="visual">Data</div>
+        <h2>Data & Visualization</h2>
+        <p class="card-text">
+          Python-based workflows for processing, analyzing, and visualizing
+          environmental and simulation data.
+        </p>
+      </article>
+    </section>
+
+    <div class="social-row">
+      <a
+        href="https://www.linkedin.com/in/jorgelvlara"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        linkedin
+      </a>
+      <a
+        href="https://github.com/Jbman444"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        github
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .home-page {
+    height: calc(100vh - 140px);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 1rem;
+    padding: 0.5rem 0 0.75rem;
+    overflow: hidden;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 110px 1.4fr 0.95fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .logo-box {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #888;
+    border-radius: 1rem;
+    display: grid;
+    place-items: center;
+    align-self: start;
+  }
+
+  .hero-text {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+
+  .eyebrow {
+    margin: 0 0 0.35rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .floating-name {
+    margin: 0 0 0.4rem;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 0.95;
+  }
+
+  .intro {
+    margin: 0;
+    max-width: 46ch;
+    font-size: 0.98rem;
+  }
+
+  .visual-3d {
+    border-radius: 1rem;
+    background: #cbd5e1;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    height: 130px;
+    align-self: start;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    padding: 0.65rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    min-height: 140px;
+  }
+
+  .visual {
+    height: 68px;
+    border-radius: 0.75rem;
+    background: #e2e8f0;
+    display: grid;
+    place-items: center;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+
+  .card h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.1;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: end;
+  }
+
+  .social-row a {
+    display: inline-block;
+    padding: 0.65rem 1rem;
+    border-radius: 1rem;
+    background: #312e81;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .social-row a:hover,
+  .social-row a:focus {
+    opacity: 0.9;
+  }
+
+  @media (max-width: 900px) {
+    .home-page {
+      height: auto;
+      grid-template-rows: auto;
+      overflow: visible;
+    }
+
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .social-row {
+      margin-top: 1rem;
+    }
+    .card-text {
+      margin-top: 0.4rem;
+      font-size: 0.85rem;
+      line-height: 1.2;
+      color: #444;
+    }
+  }
+</style>

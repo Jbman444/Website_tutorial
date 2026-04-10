@@ -1,0 +1,20 @@
+---
+// import '../styles/global.css';
+// import Footer from '../components/Footer.astro';
+// import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+const allPosts = Object.values(import.meta.glob('./posts/*.{md,mdx}', { eager: true }));
+const pageTitle = "Notable Projects";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+	<h2>Here you can find the development of my first project portfolio</h2>
+	<p> Here you'll get to know more about my projects and get a better perspective of the kind of work I do</p>
+	<p> Projects include visuals and brief a more extensive list exist in my github link at the top right corner</p>
+
+	<ul>
+		{allPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+	</ul>
+</BaseLayout>
+
+<!-- This is my project hail mary -->
