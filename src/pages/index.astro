@@ -1,176 +1,247 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Menu from '../components/Menu.astro';
+import Navigation from '../components/Navigation.astro';
+import ThemeIcon from '../components/ThemeIcon.astro';
 
 const pageTitle = "Jorge L. Vargas Lara M.S.";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <div class="home-page">
-    <section class="hero">
-      <div class="logo-box">Logo</div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+  </head>
 
-      <div class="hero-text">
-        <p class="eyebrow">Water Resources • Modeling • CFD</p>
-        <h1 class="floating-name">Jorge L. Vargas Lara</h1>
-        <p class="intro">
-          I am a Water Resources Engineer focused on computational modeling,
-          groundwater systems, and pore-scale flow processes. My work combines
-          physics-based simulation with data-driven analysis to better understand
-          environmental systems.
-        </p>
-      </div>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <nav class="site-nav">
+          <div class="nav-left">
+            <ThemeIcon />
+            <Menu />
+          </div>
+          <Navigation />
+        </nav>
+      </header>
 
-      <div class="visual-3d">3D Visual</div>
-    </section>
+      <main class="home-page">
+        <section class="hero">
+          <div class="logo-box">Logo</div>
 
-    <section class="featured-grid">
-      <article class="card">
-        <div class="visual">Biofilm</div>
-        <h2>Biofilm Research</h2>
-        <p class="card-text">
-          Pore-scale simulations and image-based modeling to study biofilm growth
-          and its impact on flow and transport.
-        </p>
-      </article>
+          <div class="hero-text">
+            <p class="eyebrow">Water Resources • Modeling • CFD</p>
+            <h1 class="floating-name">Jorge L. Vargas Lara</h1>
+            <p class="intro">
+              I am a Water Resources Engineer focused on computational modeling,
+              groundwater systems, and pore-scale flow processes. My work combines
+              physics-based simulation with data-driven analysis to better understand
+              environmental systems.
+            </p>
+          </div>
 
-      <article class="card">
-        <div class="visual">Groundwater</div>
-        <h2>Groundwater Modeling</h2>
-        <p class="card-text">
-          MODFLOW and regional hydrogeologic analysis to evaluate groundwater
-          systems and water resource management.
-        </p>
-      </article>
+          <div class="visual-3d">3D Visual</div>
+        </section>
 
-      <article class="card">
-        <div class="visual">Data</div>
-        <h2>Data & Visualization</h2>
-        <p class="card-text">
-          Python-based workflows for processing, analyzing, and visualizing
-          environmental and simulation data.
-        </p>
-      </article>
-    </section>
+        <section class="featured-grid">
+          <article class="card">
+            <div class="visual">Biofilm</div>
+            <h2>Biofilm Research</h2>
+            <p class="card-text">
+              Pore-scale simulations and image-based modeling to study biofilm growth
+              and its impact on flow and transport.
+            </p>
+          </article>
 
-    <div class="social-row">
-      <a
-        href="https://www.linkedin.com/in/jorgelvlara"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        linkedin
-      </a>
-      <a
-        href="https://github.com/Jbman444"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        github
-      </a>
+          <article class="card">
+            <div class="visual">Groundwater</div>
+            <h2>Groundwater Modeling</h2>
+            <p class="card-text">
+              MODFLOW and regional hydrogeologic analysis to evaluate groundwater
+              systems and water resource management.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="visual">Data</div>
+            <h2>Data & Visualization</h2>
+            <p class="card-text">
+              Python-based workflows for processing, analyzing, and visualizing
+              environmental and simulation data.
+            </p>
+          </article>
+        </section>
+
+        <div class="social-row">
+          <a
+            href="https://www.linkedin.com/in/jorgelvlara"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/Jbman444"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
+      </main>
     </div>
-  </div>
-</BaseLayout>
+  </body>
+</html>
 
 <style>
-  .home-page {
-    height: calc(100vh - 140px);
+  :global(*) {
+    box-sizing: border-box;
+  }
+
+  :global(html),
+  :global(body) {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family: Arial, sans-serif;
+    background: #f8fafc;
+    color: #111827;
+  }
+
+  :global(body) {
+    min-height: 100vh;
+  }
+
+  .page-shell {
+    min-height: 100vh;
+    padding: 0.75rem 1rem;
     display: grid;
-    grid-template-rows: auto auto 1fr auto;
+    grid-template-rows: auto 1fr;
+    gap: 0.5rem;
+  }
+
+  .site-header {
+    padding: 0.15rem 0;
+  }
+
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
-    padding: 0.5rem 0 0.75rem;
-    overflow: hidden;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .home-page {
+    min-height: 0;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 0.8rem;
   }
 
   .hero {
     display: grid;
-    grid-template-columns: 110px 1.4fr 0.95fr;
-    gap: 1rem;
+    grid-template-columns: 90px 1.5fr 0.85fr;
+    gap: 0.8rem;
     align-items: start;
   }
 
   .logo-box {
-    width: 100px;
-    height: 100px;
-    border: 2px dashed #888;
+    width: 90px;
+    height: 90px;
+    border: 2px dashed #94a3b8;
     border-radius: 1rem;
     display: grid;
     place-items: center;
-    align-self: start;
+    background: white;
   }
 
   .hero-text {
     min-width: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
   }
 
   .eyebrow {
-    margin: 0 0 0.35rem;
-    font-size: 0.85rem;
+    margin: 0 0 0.25rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    color: #475569;
   }
 
   .floating-name {
-    margin: 0 0 0.4rem;
-    font-size: clamp(2rem, 4vw, 3.25rem);
+    margin: 0 0 0.35rem;
+    font-size: clamp(1.9rem, 4vw, 3rem);
     line-height: 0.95;
   }
 
   .intro {
     margin: 0;
-    max-width: 46ch;
-    font-size: 0.98rem;
+    max-width: 54ch;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: #334155;
   }
 
   .visual-3d {
+    min-height: 110px;
     border-radius: 1rem;
     background: #cbd5e1;
     display: grid;
     place-items: center;
     font-weight: 600;
-    height: 130px;
-    align-self: start;
   }
 
   .featured-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    align-items: start;
+    gap: 0.8rem;
+    align-items: stretch;
   }
 
   .card {
-    border: 1px solid #ccc;
+    border: 1px solid #cbd5e1;
     border-radius: 1rem;
     padding: 0.65rem;
+    background: white;
+    min-height: 165px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    min-height: 140px;
   }
 
   .visual {
-    height: 68px;
+    height: 56px;
     border-radius: 0.75rem;
     background: #e2e8f0;
     display: grid;
     place-items: center;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
     font-weight: 600;
   }
 
   .card h2 {
-    margin: 0;
-    font-size: 1.05rem;
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
     line-height: 1.1;
+  }
+
+  .card-text {
+    margin: 0;
+    font-size: 0.87rem;
+    line-height: 1.25;
+    color: #475569;
   }
 
   .social-row {
     display: flex;
     gap: 0.75rem;
     align-items: end;
+    margin-top: auto;
   }
 
   .social-row a {
@@ -189,10 +260,13 @@ const pageTitle = "Jorge L. Vargas Lara M.S.";
   }
 
   @media (max-width: 900px) {
-    .home-page {
-      height: auto;
-      grid-template-rows: auto;
-      overflow: visible;
+    .page-shell {
+      min-height: auto;
+    }
+
+    .site-nav {
+      flex-direction: column;
+      align-items: stretch;
     }
 
     .hero {
@@ -204,13 +278,7 @@ const pageTitle = "Jorge L. Vargas Lara M.S.";
     }
 
     .social-row {
-      margin-top: 1rem;
-    }
-    .card-text {
-      margin-top: 0.4rem;
-      font-size: 0.85rem;
-      line-height: 1.2;
-      color: #444;
+      flex-wrap: wrap;
     }
   }
 </style>
