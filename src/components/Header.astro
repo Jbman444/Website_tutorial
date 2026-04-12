@@ -2,20 +2,98 @@
 import Menu from './Menu.astro';
 import Navigation from './Navigation.astro';
 import ThemeIcon from './ThemeIcon.astro';
+import PixelWave from './PixelWave.astro';
 ---
-<header>
-  <nav>
-    <div>
-      <ThemeIcon />
-      <Menu />
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="/" class="logo-slot" aria-label="Home">
+      <PixelWave />
+      <!-- <PixelWave style="width: 220px; height: 220px;" /> -->
+    </a>
+
+    <div class="nav-right">
+      <div class="desktop-controls">
+        <ThemeIcon />
+        <Navigation />
+      </div>
+
+      <div class="mobile-controls">
+        <ThemeIcon />
+        <Menu />
+      </div>
     </div>
-    <Navigation />
   </nav>
 </header>
 
 <style>
-  div {
+  .site-header {
+    background: white;
+    border-bottom: 1px solid #dbe3ec;
+    padding: 0.75rem 1rem;
+  }
+
+  :global(html.dark) .site-header {
+    background: #0d0950;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .site-nav {
+    width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .logo-slot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 48px;
+    border-radius: 0.85rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: #f8fafc;
+    color: #111827;
+    border: 1px solid #cbd5e1;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  :global(html.dark) .logo-slot {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .desktop-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .mobile-controls {
+    display: none;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 635px) {
+    .desktop-controls {
+      display: none;
+    }
+
+    .mobile-controls {
+      display: flex;
+    }
   }
 </style>

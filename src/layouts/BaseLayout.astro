@@ -1,60 +1,152 @@
-<!-- ---
+---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-const pageTitle = "Home Page";
+
+const {
+  pageTitle = 'Project Page',
+  pageDescription = '',
+} = Astro.props;
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
+
   <body>
     <Header />
-    <h1>{pageTitle}</h1>
+
+    <main class="page-shell">
+      <section class="page-hero">
+        <p class="eyebrow">Projects</p>
+        <h1>{pageTitle}</h1>
+        {pageDescription && <p class="page-description">{pageDescription}</p>}
+      </section>
+
+      <section class="page-content">
+        <slot />
+      </section>
+    </main>
+
     <Footer />
+
     <script>
       import "../scripts/menu.js";
     </script>
   </body>
-</html> -->
-
----
-// import Navigation from '../components/Navigation.astro';
-import Header from '../components/Header.astro';
-import '../styles/global.css';
-import Footer from '../components/Footer.astro';
-const { pageTitle } = Astro.props;
-const authorName = 'Jorge L. Vargas Lara'
----
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-
-		<!-- <a href="/">Home</a> -->
-		<!-- <a href="/about/">About</a>
-		<a href="/blog/">Projects</a> -->
-		<!-- <Navigation /> -->
-		<Header />
-		<h1>{pageTitle}</h1>
-		<!-- <h2>This is Jorge's first Website</h2> -->
-        <slot />
-		<Footer />
-
-		<script>
-		import "../scripts/menu.js";
-		</script>
-
-	</body>
 </html>
+
+<style>
+  .page-shell {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    padding: 1rem 1rem 2rem;
+  }
+
+  .page-hero {
+    margin-bottom: 1.5rem;
+    padding: 0.25rem 0 0.5rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  }
+
+  .eyebrow {
+    margin: 0 0 0.3rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #475569;
+  }
+
+  h1 {
+    margin: 0 0 0.5rem;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 0.95;
+    color: #111827;
+  }
+
+  .page-description {
+    margin: 0;
+    max-width: 70ch;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #334155;
+  }
+
+  .page-content {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  :global(.content-block) {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 1rem;
+    background: white;
+  }
+
+  :global(.content-block img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.85rem;
+  }
+
+  :global(.content-block h2) {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.15;
+  }
+
+  :global(.content-block p) {
+    margin: 0;
+    color: #475569;
+    line-height: 1.5;
+  }
+
+  :global(html.dark) .eyebrow {
+    color: #cbd5e1;
+  }
+
+  :global(html.dark) h1 {
+    color: white;
+  }
+
+  :global(html.dark) .page-description {
+    color: #dbeafe;
+  }
+
+  :global(html.dark) .page-hero {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  :global(html.dark) .content-block {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  :global(html.dark) .content-block p {
+    color: #dbeafe;
+  }
+
+  @media (max-width: 700px) {
+    .page-shell {
+      padding: 0.9rem 0.9rem 1.5rem;
+    }
+
+    .page-content {
+      gap: 1rem;
+    }
+
+    :global(.content-block) {
+      padding: 0.85rem;
+    }
+  }
+</style>

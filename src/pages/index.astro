@@ -1,7 +1,7 @@
 ---
-import Menu from '../components/Menu.astro';
-import Navigation from '../components/Navigation.astro';
-import ThemeIcon from '../components/ThemeIcon.astro';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 const pageTitle = "Jorge L. Vargas Lara M.S.";
 ---
@@ -14,82 +14,55 @@ const pageTitle = "Jorge L. Vargas Lara M.S.";
   </head>
 
   <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <nav class="site-nav">
-          <div class="nav-left">
-            <ThemeIcon />
-            <Menu />
-          </div>
-          <Navigation />
-        </nav>
-      </header>
+    <Header />
 
-      <main class="home-page">
-        <section class="hero">
-          <div class="logo-box">Logo</div>
-
-          <div class="hero-text">
-            <p class="eyebrow">Water Resources • Modeling • CFD</p>
-            <h1 class="floating-name">Jorge L. Vargas Lara</h1>
-            <p class="intro">
-              I am a Water Resources Engineer focused on computational modeling,
-              groundwater systems, and pore-scale flow processes. My work combines
-              physics-based simulation with data-driven analysis to better understand
-              environmental systems.
-            </p>
-          </div>
-
-          <div class="visual-3d">3D Visual</div>
-        </section>
-
-        <section class="featured-grid">
-          <article class="card">
-            <div class="visual">Biofilm</div>
-            <h2>Biofilm Research</h2>
-            <p class="card-text">
-              Pore-scale simulations and image-based modeling to study biofilm growth
-              and its impact on flow and transport.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="visual">Groundwater</div>
-            <h2>Groundwater Modeling</h2>
-            <p class="card-text">
-              MODFLOW and regional hydrogeologic analysis to evaluate groundwater
-              systems and water resource management.
-            </p>
-          </article>
-
-          <article class="card">
-            <div class="visual">Data</div>
-            <h2>Data & Visualization</h2>
-            <p class="card-text">
-              Python-based workflows for processing, analyzing, and visualizing
-              environmental and simulation data.
-            </p>
-          </article>
-        </section>
-
-        <div class="social-row">
-          <a
-            href="https://www.linkedin.com/in/jorgelvlara"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/Jbman444"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
+    <main class="home-page">
+      <section class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">Water Resources • Modeling • CFD</p>
+          <h1 class="floating-name">Jorge L. Vargas Lara</h1>
+          <p class="intro">
+            I am a Water Resources Engineer focused on computational modeling,
+            groundwater systems, and pore-scale flow processes. My work combines
+            physics-based simulation with data-driven analysis to better understand
+            environmental systems.
+          </p>
         </div>
-      </main>
-    </div>
+
+        <div class="visual-3d">3D Visual</div>
+      </section>
+
+      <section class="featured-grid">
+        <article class="card">
+          <div class="visual">Biofilm</div>
+          <h2>Biofilm Research</h2>
+          <p class="card-text">
+            Pore-scale simulations and image-based modeling to study biofilm growth
+            and its impact on flow and transport.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="visual">Groundwater</div>
+          <h2>Groundwater Modeling</h2>
+          <p class="card-text">
+            MODFLOW and regional hydrogeologic analysis to evaluate groundwater
+            systems and water resource management.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="visual">Data</div>
+          <h2>Data & Visualization</h2>
+          <p class="card-text">
+            Python-based workflows for processing, analyzing, and visualizing
+            environmental and simulation data.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <Footer />
   </body>
 </html>
 
@@ -105,61 +78,35 @@ const pageTitle = "Jorge L. Vargas Lara M.S.";
     width: 100%;
     min-height: 100%;
     font-family: Arial, sans-serif;
-    background: #f8fafc;
+    background: #f1f5f9;
     color: #111827;
   }
 
   :global(body) {
     min-height: 100vh;
-  }
-
-  .page-shell {
-    min-height: 100vh;
-    padding: 0.75rem 1rem;
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 0.5rem;
   }
 
-  .site-header {
-    padding: 0.15rem 0;
-  }
-
-  .site-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+  :global(html.dark),
+  :global(html.dark body) {
+    background: #0d0950;
+    color: white;
   }
 
   .home-page {
     min-height: 0;
+    padding: 0.85rem 1rem 5rem;
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto;
     gap: 0.8rem;
   }
 
   .hero {
     display: grid;
-    grid-template-columns: 90px 1.5fr 0.85fr;
+    grid-template-columns: 1.8fr 0.7fr;
     gap: 0.8rem;
     align-items: start;
-  }
-
-  .logo-box {
-    width: 90px;
-    height: 90px;
-    border: 2px dashed #94a3b8;
-    border-radius: 1rem;
-    display: grid;
-    place-items: center;
-    background: white;
   }
 
   .hero-text {
@@ -174,27 +121,40 @@ const pageTitle = "Jorge L. Vargas Lara M.S.";
     color: #475569;
   }
 
+  :global(html.dark) .eyebrow {
+    color: #cbd5e1;
+  }
+
   .floating-name {
     margin: 0 0 0.35rem;
-    font-size: clamp(1.9rem, 4vw, 3rem);
+    font-size: clamp(2rem, 4vw, 3.2rem);
     line-height: 0.95;
   }
 
   .intro {
     margin: 0;
-    max-width: 54ch;
-    font-size: 0.95rem;
-    line-height: 1.35;
+    max-width: 65ch;
+    font-size: 0.98rem;
+    line-height: 1.4;
     color: #334155;
   }
 
+  :global(html.dark) .intro {
+    color: #e2e8f0;
+  }
+
   .visual-3d {
-    min-height: 110px;
+    min-height: 100px;
     border-radius: 1rem;
     background: #cbd5e1;
     display: grid;
     place-items: center;
     font-weight: 600;
+  }
+
+  :global(html.dark) .visual-3d {
+    background: rgba(255, 255, 255, 0.14);
+    color: white;
   }
 
   .featured-grid {
@@ -207,11 +167,16 @@ const pageTitle = "Jorge L. Vargas Lara M.S.";
   .card {
     border: 1px solid #cbd5e1;
     border-radius: 1rem;
-    padding: 0.65rem;
+    padding: 0.7rem;
     background: white;
     min-height: 165px;
     display: flex;
     flex-direction: column;
+  }
+
+  :global(html.dark) .card {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.14);
   }
 
   .visual {
@@ -222,6 +187,10 @@ const pageTitle = "Jorge L. Vargas Lara M.S.";
     place-items: center;
     margin-bottom: 0.5rem;
     font-weight: 600;
+  }
+
+  :global(html.dark) .visual {
+    background: rgba(255, 255, 255, 0.12);
   }
 
   .card h2 {
@@ -237,38 +206,11 @@ const pageTitle = "Jorge L. Vargas Lara M.S.";
     color: #475569;
   }
 
-  .social-row {
-    display: flex;
-    gap: 0.75rem;
-    align-items: end;
-    margin-top: auto;
-  }
-
-  .social-row a {
-    display: inline-block;
-    padding: 0.65rem 1rem;
-    border-radius: 1rem;
-    background: #312e81;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .social-row a:hover,
-  .social-row a:focus {
-    opacity: 0.9;
+  :global(html.dark) .card-text {
+    color: #dbeafe;
   }
 
   @media (max-width: 900px) {
-    .page-shell {
-      min-height: auto;
-    }
-
-    .site-nav {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
     .hero {
       grid-template-columns: 1fr;
     }
@@ -277,8 +219,8 @@ const pageTitle = "Jorge L. Vargas Lara M.S.";
       grid-template-columns: 1fr;
     }
 
-    .social-row {
-      flex-wrap: wrap;
+    .home-page {
+      padding-bottom: 5.5rem;
     }
   }
 </style>

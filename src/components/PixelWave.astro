@@ -1,0 +1,84 @@
+---
+const {
+  cols = 15,
+  rows = 12,
+  cell = 4,
+  gap = 1,
+  fg = '#00d4ff',
+  bg = '#001219',
+  label = 'Animated pixel wave'
+} = Astro.props;
+
+const canvasId = `pl-wave-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<canvas
+  id={canvasId}
+  aria-label={label}
+  style="
+    image-rendering: pixelated;
+  "
+></canvas>
+
+<script define:vars={{ canvasId, cols, rows, cell, gap, fg, bg }}>
+  (() => {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const COLS = Number(cols);
+    const ROWS = Number(rows);
+    const CELL = Number(cell);
+    const GAP = Number(gap);
+    const FG = fg;
+    const BG = bg;
+    const FPS = 24;
+    const FRAME_TIME = 1000 / FPS;
+
+    const WIDTH = COLS * (CELL + GAP) - GAP;
+    const HEIGHT = ROWS * (CELL + GAP) - GAP;
+
+    let last = 0;
+    const M = Math;
+
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+
+    const rule = (x, y, t) =>
+      M.sin(x * M.PI * 6 + t * 3) > M.sin(y * M.PI * 2 + t) ? 1 : 0;
+
+    function loop(ts) {
+      if (ts - last >= FRAME_TIME) {
+        last = ts;
+        const t = ts / 1000;
+
+        ctx.fillStyle = BG;
+        ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+        for (let iy = 0; iy < ROWS; iy++) {
+          for (let ix = 0; ix < COLS; ix++) {
+            const x = COLS > 1 ? ix / (COLS - 1) : 0;
+            const y = ROWS > 1 ? iy / (ROWS - 1) : 0;
+            const v = rule(x, y, t);
+
+            if (v > 0) {
+              ctx.fillStyle = FG;
+              ctx.fillRect(
+                ix * (CELL + GAP),
+                iy * (CELL + GAP),
+                CELL,
+                CELL
+              );
+            }
+          }
+        }
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    requestAnimationFrame(loop);
+  })();
+</script>

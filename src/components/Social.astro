@@ -1,38 +1,82 @@
-<!-- ---
-const { platform, username } = Astro.props;
----
-<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
-
-
-<style>
-  a {
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: #4c1d95;
-    text-decoration: none;
-  }
-</style> -->
-
-
 ---
 const { platform, username } = Astro.props;
+
+const label = String(platform ?? "");
+const key = label.toLowerCase();
 
 let url = "";
 
-if (platform === "linkedin") {
+if (key === "linkedin") {
   url = "https://www.linkedin.com/in/" + username;
+} else if (key === "email") {
+  url = "mailto:" + username;
 } else {
-  url = "https://www." + platform + ".com/" + username;
+  url = "https://www." + key + ".com/" + username;
 }
 ---
 
-<a href={url}>{platform}</a>
+<a
+  href={url}
+  class={`social-btn ${key === "email" ? "email-btn" : ""}`}
+  target={key === "email" ? undefined : "_blank"}
+  rel={key === "email" ? undefined : "noopener noreferrer"}
+>
+  {label}
+</a>
 
 <style>
-  a {
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: #291d95;
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 0.95rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
     text-decoration: none;
+    border: 1px solid #cbd5e1;
+    background: white;
+    color: #111827;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.15s ease;
+  }
+
+  .social-btn:hover,
+  .social-btn:focus {
+    transform: translateY(-1px);
+    background: #f1f5f9;
+  }
+
+  .email-btn {
+    background: #ff7f66;
+    color: white;
+    border: none;
+  }
+
+  .email-btn:hover,
+  .email-btn:focus {
+    background: #ff6a4d;
+  }
+
+  :global(html.dark) .social-btn {
+    background: white;
+    color: black;
+    border-color: white;
+  }
+
+  :global(html.dark) .social-btn:hover,
+  :global(html.dark) .social-btn:focus {
+    background: #e5e7eb;
+  }
+
+  :global(html.dark) .email-btn {
+    background: #ff7f66;
+    color: white;
+    border: none;
+  }
+
+  :global(html.dark) .email-btn:hover,
+  :global(html.dark) .email-btn:focus {
+    background: #ff6a4d;
   }
 </style>
